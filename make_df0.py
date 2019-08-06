@@ -10,6 +10,7 @@ import time
 import statistics as mean
 import random
 from fun import do_smd, do_dif, find_peaks, analize_peaks, fix_peaks
+from itai_functions import end_finder
 
 
 def noise_filter(events):
@@ -62,14 +63,20 @@ def check_width(mx, my, ydata1):
     return width
 
 
-
-
 def filteron(n):
     n_filter= noise_filter(n)
-    for i in range(0, len(n)):
-        if n<n_filter:
-          #  check_width()
-    #  plt.plot(x, y, '-')
+    big_filter = n_filter
+    for itera in range(len(n_filter)):
+        init, fin = end_finder(n[n_filter[itera]])
+        if (fin- init)<40:
+            big_filter.remove()
+    # check_width()
+    for index in big_filter:
+        use_x = [index]
+        use_y = [n[index]]
+        plt.plot(use_x,use_y, 'r+')
+    plt.show()
+    # plt.plot(x, y, '-')
     # plt.show()
 
 #===========================================

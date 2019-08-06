@@ -1,10 +1,10 @@
-from make_df0 import noise_filter
 import numpy as np
 
 
-def end_finder(signal, channel):
-    points = signal[:, channel]
-    noise_free = noise_filter(points)
+def end_finder(signal):
+    noise_free = signal
+    points = signal
+   # noise_free = noise_filter(points)
     peaks = []
     for i in noise_free:
         peaks.append(points[i])

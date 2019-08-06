@@ -8,14 +8,15 @@ import matplotlib.pyplot as plt
 import itertools
 import time
 import sys
+from itai_functions import end_finder
 from fun import do_smd, do_dif, find_peaks, analize_peaks, fix_peaks
 
 PMT_num=20
 time_samples=1024
 start_time = time.time()
-path='/home/gerak/Desktop/DireXeno/pulser_190803_46211/'
-file=open(path+'out.DXD', 'rb')
-event=0
+path = "C:\\Users\\Yanai's laptop\\Downloads\\"
+file = open(path + 'out.DXD', 'rb')
+event=1
 rec_list=[]
 Dataframe=pd.DataFrame()
 v=850

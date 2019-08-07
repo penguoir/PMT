@@ -35,3 +35,12 @@ def end_finder(signal, channel):
         else:
             break
     return end1, end2
+
+def area(signal, channel):
+    points = signal[:, channel]
+    median = np.median(points)
+    area = 0
+    init, fin = end_finder(signal, channel)
+    for i in range(init, fin + 1):
+        area -= (points[i] - median)
+    return area
